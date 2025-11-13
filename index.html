@@ -17,8 +17,12 @@
       <input v-model="carVendor" placeholder="Car Vendor" />
       <input v-model="carModel" placeholder="Car Model" />
       <input v-model="carPrice" placeholder="Car Price" />
-      
       <button v-on:click="saveCar">Save Car</button>
+
+      <br><br>
+
+      <input v-model="carId" placeholder="Car Id" />
+      <button v-on:click="deleteCar">Delete Car</button>
 
       <h3>Status: {{ statusCode }}</h3>
 

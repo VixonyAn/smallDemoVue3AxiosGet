@@ -8,6 +8,7 @@ const app = Vue.createApp({
             carVendor: '',
             carModel: '',
             carPrice: 0,
+            carId: 0,
             statusCode: '',
         }
     },
@@ -47,7 +48,22 @@ const app = Vue.createApp({
                     console.log(error)
                  } 
             )
-        }
+        },
+        deleteCar() {
+            console.log("Is in the method deleteCar");
+            axios.delete(baseUrl + "/" + this.carId)
+            .then(
+                response => {
+                    console.log(response)
+                    console.log(response.data)
+                }
+            )
+            .catch(
+                 error => {
+                    console.log(error)
+                 } 
+            )
+        },
     },
     computed: {
         myComputed() {
