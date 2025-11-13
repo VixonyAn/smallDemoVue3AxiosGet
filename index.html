@@ -13,7 +13,15 @@
       <div class="nav-bar"></div>
 
       <h1>{{ intro }}</h1>
+
+      <input v-model="carVendor" placeholder="Car Vendor" />
+      <input v-model="carModel" placeholder="Car Model" />
+      <input v-model="carPrice" placeholder="Car Price" />
       
+      <button v-on:click="saveCar">Save Car</button>
+
+      <h2>{{ carVendor }} {{ carModel }} {{ carPrice }}</h2>
+
       <button v-on:click="getAllCars">Get Cars</button>
 
       <ul>
@@ -31,9 +39,6 @@
       const mountedApp = app.mount('#app')
     </script>
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
-
     
-    
-
   </body>
 </html>

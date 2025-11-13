@@ -3,9 +3,11 @@ const baseUrl = "http://localhost:5180/api/cars"
 const app = Vue.createApp({
     data() {
         return {
-            intro: 'Welcome to my Vue template',
+            intro: 'Cars Vue App',
             carList:[],
-
+            carVendor: '',
+            carModel: '',
+            carPrice: 0
         }
     },
     methods: {
@@ -29,8 +31,22 @@ const app = Vue.createApp({
             )
 
 
-
         },
+        saveCar() {
+            console.log("Is in the method saveCar");
+            axios.post(baseUrl, {"vendor": this.carVendor, "model": this.carModel, "price": this.carPrice})
+            .then(
+                response => {
+                    console.log(response)
+                    console.log(response.data)
+                }
+            )
+            .catch(
+                 error => {
+                    console.log(error)
+                 } 
+            )
+        }
     },
     computed: {
         myComputed() {
