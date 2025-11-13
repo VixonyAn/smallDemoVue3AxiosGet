@@ -20,6 +20,8 @@
       
       <button v-on:click="saveCar">Save Car</button>
 
+      <h3>Status: {{ statusCode }}</h3>
+
       <h2>{{ carVendor }} {{ carModel }} {{ carPrice }}</h2>
 
       <button v-on:click="getAllCars">Get Cars</button>
@@ -39,6 +41,6 @@
       const mountedApp = app.mount('#app')
     </script>
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
-    
+
   </body>
 </html>

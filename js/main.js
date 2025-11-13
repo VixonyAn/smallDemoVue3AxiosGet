@@ -7,7 +7,8 @@ const app = Vue.createApp({
             carList:[],
             carVendor: '',
             carModel: '',
-            carPrice: 0
+            carPrice: 0,
+            statusCode: '',
         }
     },
     methods: {
@@ -22,15 +23,15 @@ const app = Vue.createApp({
                 response => {
                     console.log(response)
                     this.carList = response.data
+                    this.statusCode = response.status
                 }
             )
             .catch(
                  error => {
                     console.log(error)
+                    this.statusCode = error.response.status
                  } 
             )
-
-
         },
         saveCar() {
             console.log("Is in the method saveCar");
