@@ -4,7 +4,8 @@ const app = Vue.createApp({
     data() {
         return {
             intro: 'Cars Vue App',
-            carList:[],
+            allCarList: [],
+            carList: [],
             carVendor: '',
             carModel: '',
             carPrice: 0,
@@ -23,8 +24,9 @@ const app = Vue.createApp({
             .then(
                 response => {
                     console.log(response)
-                    this.carList = response.data
+                    this.allCarList = response.data
                     this.statusCode = response.status
+                    this.carList = this.allCarList //initializes
                 }
             )
             .catch(
@@ -34,6 +36,22 @@ const app = Vue.createApp({
                  } 
             )
         },
+
+        sortByPrice(){
+            console.log("er i metoden sortByPrice");
+            //this.carList = this.allCarList //laver en kopi af arrayet
+            this.carList.sort((a, b) => b.price - a.price) //sorterer
+        },
+        sortByPriceAsc(){
+            console.log("er i metoden sortByPriceAsc");
+            this.carList.sort((a,b) => a.price - b.price)
+        },
+        filterPrice(){
+            console.log("er i metoden filterPrice");
+            //this.carList.filter((car) => car.price < 500000)
+            this.carList = this.allCarList.filter((car) => car.price < 500000)
+        },
+
         saveCar() {
             console.log("Is in the method saveCar");
             axios.post(baseUrl, {"vendor": this.carVendor, "model": this.carModel, "price": this.carPrice})
